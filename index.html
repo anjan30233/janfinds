@@ -3,305 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JAN FINDS | Fashion Store</title>
+<title>JAN FINDS ♡ | Fashion Boutique</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
- font-family:Arial,sans-serif;
- background:#fff8fb;
- color:#49333e;
+  font-family:'DM Sans',sans-serif;
+  background:#fffaf8;
+  color:#49383e;
 }
+
 header{
- background:#fff;
- padding:20px;
- text-align:center;
+  text-align:center;
+  padding:25px 12px;
+  background:#fcecf0;
 }
+
 .logo{
- font-size:30px;
- font-weight:bold;
- letter-spacing:4px;
- color:#d45d91;
+  font-family:'Playfair Display',serif;
+  font-size:35px;
+  color:#a65772;
+  letter-spacing:3px;
 }
-header p{font-size:12px;margin-top:6px}
+
+.tagline{
+  font-size:10px;
+  letter-spacing:3px;
+  margin-top:7px;
+  color:#99717e;
+}
+
 nav{
- display:flex;
- justify-content:center;
- gap:22px;
- padding:15px;
- background:#fce5ef;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  padding:17px 8px;
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:5;
+  box-shadow:0 2px 12px #00000008;
 }
+
 nav a{
- text-decoration:none;
- color:#633c50;
- font-size:14px;
+  color:#805968;
+  text-decoration:none;
+  font-size:13px;
 }
+
 .hero{
- padding:55px 20px;
- text-align:center;
- background:linear-gradient(135deg,#fbd8e7,#fff0f5);
+  text-align:center;
+  padding:85px 18px;
+  background:linear-gradient(135deg,#f8dfe7,#fff1e9);
 }
-.hero h1{font-size:32px;margin-bottom:12px}
-.hero p{margin-bottom:22px}
+
+.hero small{
+  color:#a66b7d;
+  letter-spacing:3px;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:43px;
+  color:#98556d;
+  margin:18px 0;
+}
+
+.hero p{
+  font-size:14px;
+  color:#806d73;
+  margin-bottom:25px;
+}
+
 .btn{
- display:inline-block;
- background:#d45d91;
- color:white;
- padding:12px 25px;
- border-radius:25px;
- text-decoration:none;
+  display:inline-block;
+  padding:13px 27px;
+  border-radius:30px;
+  background:#ae657e;
+  color:white;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  font-size:13px;
 }
-h2{
- text-align:center;
- margin:35px 0 20px;
- color:#b64c7c;
+
+.section-title{
+  text-align:center;
+  padding:45px 10px 20px;
 }
+
+.section-title h2{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  color:#a65d75;
+}
+
+.section-title p{
+  font-size:12px;
+  color:#9a8188;
+  margin-top:8px;
+}
+
 .products{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:15px;
- padding:15px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+  padding:15px;
+  max-width:900px;
+  margin:auto;
 }
+
 .card{
- background:white;
- border-radius:14px;
- overflow:hidden;
- box-shadow:0 3px 12px #ead6df;
- text-align:center;
- padding-bottom:15px;
+  background:white;
+  padding:9px;
+  border-radius:17px;
+  box-shadow:0 5px 20px #c99aa51c;
 }
+
 .card img{
- width:100%;
- height:210px;
- object-fit:cover;
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
 }
-.card h3{font-size:15px;margin:12px 5px}
-.card p{font-weight:bold;color:#d45d91;margin:8px}
-.card a{
- display:inline-block;
- background:#d45d91;
- color:white;
- padding:9px 18px;
- border-radius:20px;
- text-decoration:none;
- font-size:13px;
+
+.card h3{
+  font-family:'Playfair Display',serif;
+  color:#92536a;
+  font-size:17px;
+  margin:12px 4px 5px;
 }
+
+.price{
+  margin:5px;
+  font-weight:700;
+  color:#9e5c73;
+}
+
+.card button{
+  width:100%;
+  margin-top:9px;
+  padding:11px;
+  border:0;
+  border-radius:25px;
+  background:#f5e4e9;
+  color:#96566d;
+  cursor:pointer;
+}
+
+#cart{
+  text-align:center;
+  padding:35px 15px;
+  background:#fff0f3;
+  margin-top:35px;
+}
+
+#cart h2,#checkout h2{
+  font-family:'Playfair Display',serif;
+  color:#a65d75;
+  margin-bottom:15px;
+}
+
+#checkout{
+  max-width:500px;
+  margin:35px auto;
+  padding:25px 18px;
+  text-align:center;
+  background:#fff0f3;
+  border-radius:20px;
+}
+
+#checkout input,#checkout textarea,#checkout select{
+  display:block;
+  width:100%;
+  padding:13px;
+  margin:12px 0;
+  border:1px solid #efd5de;
+  border-radius:10px;
+  background:white;
+  font-family:inherit;
+}
+
+.note{
+  font-size:11px;
+  color:#967b84;
+  margin-top:15px;
+  line-height:1.6;
+}
+
 footer{
- background:#fce5ef;
- text-align:center;
- padding:30px 15px;
- margin-top:35px;
+  text-align:center;
+  padding:35px 15px;
+  background:#f9e9ee;
+  color:#916a78;
+  font-size:12px;
+  line-height:2;
 }
-footer a{color:#b64c7c;text-decoration:none}
+
+footer strong{
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+}
+
+@media(min-width:650px){
+  .products{grid-template-columns:repeat(4,1fr)}
+  .hero h1{font-size:55px}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">JAN FINDS ♡</div>
-<p>YOUR EVERYDAY FASHION DESTINATION</p>
+  <div class="logo">JAN FINDS ♡</div>
+  <div class="tagline">YOUR EVERYDAY FASHION DESTINATION</div>
 </header>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#collection">Collection</a>
-<a href="#about">About</a>
+  <a href="#home">Home</a>
+  <a href="#collection">Collection</a>
+  <a href="#cart">Cart</a>
+  <a href="#checkout">Order</a>
 </nav>
 
 <section class="hero" id="home">
-<h1>Find Your Pretty Style 🌸</h1>
-<p>Discover cute, trendy & affordable fashion.</p>
-<a href="#collection" class="btn">Explore Collection</a>
+  <small>♡ WELCOME TO JAN FINDS ♡</small>
+  <h1>Find Your Pretty Style</h1>
+  <p>Discover beautiful outfits for your everyday moments.</p>
+  <a href="#collection" class="btn">Explore Collection ♡</a>
 </section>
 
-<h2 id="collection">♡ Our Collection ♡</h2>
+<section id="collection">
+  <div class="section-title">
+    <h2>Our Pretty Collection</h2>
+    <p>Handpicked styles just for you ✨</p>
+  </div>
 
-<section class="products">
+  <div class="products">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1583391733956-6c78276477e4?w=500" alt="Fashion">
-<h3>Pretty Kurti</h3>
-<p>Check Price</p>
-<a href="#" target="_blank">Shop Now</a>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?w=500" alt="Pretty outfit">
+      <h3>Pretty Kurti</h3>
+      <p class="price">₹299</p>
+      <button onclick="addCart('Pretty Kurti',299)">Add to Cart ♡</button>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500" alt="Fashion">
-<h3>Trendy Outfit</h3>
-<p>Check Price</p>
-<a href="#" target="_blank">Shop Now</a>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500" alt="Trendy outfit">
+      <h3>Trendy Outfit</h3>
+      <p class="price">₹399</p>
+      <button onclick="addCart('Trendy Outfit',399)">Add to Cart ♡</button>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500" alt="Fashion">
-<h3>Pretty Dress</h3>
-<p>Check Price</p>
-<a href="#" target="_blank">Shop Now</a>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500" alt="Pretty dress">
+      <h3>Pretty Dress</h3>
+      <p class="price">₹499</p>
+      <button onclick="addCart('Pretty Dress',499)">Add to Cart ♡</button>
+    </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Fashion">
-<h3>Fashion Finds</h3>
-<p>Check Price</p>
-<a href="#" target="_blank">Shop Now</a>
-</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500" alt="Fashion outfit">
+      <h3>Fashion Finds</h3>
+      <p class="price">₹349</p>
+      <button onclick="addCart('Fashion Finds',349)">Add to Cart ♡</button>
+    </div>
 
+  </div>
 </section>
 
-<footer id="about">
-<h2>JAN FINDS ♡</h2>
-<p>Making everyday fashion beautiful.</p>
-<br>
-<a href="https://www.instagram.com/janfinds_/"
-target="_blank">Follow us on Instagram ♡</a>
-<p style="margin-top:20px;font-size:12px">
-© 2026 JAN FINDS. All Rights Reserved.
-</p>
+<section id="cart">
+  <h2>Your Shopping Bag ♡</h2>
+  <p id="cartItems">Your cart is empty.</p>
+  <h3 id="total">Total: ₹0</h3>
+</section>
+
+<section id="checkout">
+  <h2>Place Your Order ♡</h2>
+
+  <form onsubmit="event.preventDefault();alert('This is only a demo. No order has been placed.');">
+    <input type="text" placeholder="Your Name" required>
+    <input type="tel" placeholder="Mobile Number" required>
+    <textarea placeholder="Delivery Address" rows="3" required></textarea>
+
+    <select required>
+      <option value="">Choose Payment Method</option>
+      <option>Cash on Delivery</option>
+      <option>UPI</option>
+    </select>
+
+    <button class="btn" type="submit">Place Order ♡</button>
+  </form>
+
+  <p class="note">
+    Demo checkout only. Orders and payments are not processed.
+  </p>
+</section>
+
+<footer>
+  <strong>JAN FINDS ♡</strong>
+  <p>Your everyday fashion destination.</p>
+  <p>Instagram: @janfinds_</p>
+  <p>Made with love ♡</p>
 </footer>
 
+<script>
+let cart=[];
+function addCart(name,price){
+  cart.push({name,price});
+  document.getElementById('cartItems').innerHTML=
+    cart.map(item=>item.name+' — ₹'+item.price).join('<br>');
+  let total=cart.reduce((sum,item)=>sum+item.price,0);
+  document.getElementById('total').innerText='Total: ₹'+total;
+}
+</script>
+
 </body>
-  </html>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: #fffaf8;
-  color: #493b3d;
-  font-family: 'DM Sans', sans-serif;
-}
-
-header {
-  background: #fff0f2;
-  text-align: center;
-  padding: 28px 15px;
-}
-
-header h1, footer h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  color: #a65d72;
-  letter-spacing: 2px;
-}
-
-header p {
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: #9b7580;
-}
-
-nav {
-  background: #fff;
-  padding: 17px;
-  text-align: center;
-  border-bottom: 1px solid #f5e3e7;
-}
-
-nav a {
-  color: #805866;
-  text-decoration: none;
-  margin: 0 12px;
-  font-size: 13px;
-}
-
-.hero {
-  text-align: center;
-  padding: 85px 20px;
-  background: linear-gradient(135deg,#fce8ec,#fff5ed);
-}
-
-.hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  color: #9e586d;
-}
-
-.hero p {
-  color: #806b70;
-}
-
-button, .hero a {
-  background: #b96f83;
-  color: white;
-  border: none;
-  padding: 13px 25px;
-  border-radius: 30px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.products {
-  padding: 45px 15px;
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 18px;
-}
-
-.card {
-  background: white;
-  padding: 10px;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px #d9b8c033;
-  overflow: hidden;
-}
-
-.card img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.card h3 {
-  font-family: 'Playfair Display', serif;
-  color: #9e586d;
-}
-
-.card p {
-  color: #8c777c;
-  font-size: 13px;
-}
-
-.card a {
-  display: inline-block;
-  background: #f6e4e9;
-  color: #96576b;
-  padding: 9px 15px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-#checkout {
-  text-align: center;
-  border-radius: 25px;
-  margin: 20px;
-}
-
-#checkout input, #checkout textarea,
-#checkout select {
-  border: 1px solid #efd5dc;
-  border-radius: 12px;
-  font-family: inherit;
-}
-
-footer {
-  text-align: center;
-  background: #faedf0;
-  padding: 35px 15px;
-}
-
-@media(max-width:480px) {
-  .hero h2 {font-size: 34px;}
-  .card img {height: 170px;}
-  nav a {margin: 0 7px;}
-}
- </style>
-
-
-
+</html>

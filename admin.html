@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAN FINDS | Admin</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fffaf8;font-family:Arial,sans-serif;color:#49343b}
+header{background:#fcecf0;padding:20px;text-align:center;color:#a65772}
+h1{font-family:Georgia,serif}
+.container{max-width:900px;margin:25px auto;padding:15px}
+.box{background:white;padding:22px;border-radius:15px;box-shadow:0 3px 15px #0001;margin-bottom:20px}
+input{width:100%;padding:13px;margin:9px 0;border:1px solid #edcbd6;border-radius:8px}
+button{background:#a65772;color:white;border:0;padding:12px 18px;border-radius:8px;cursor:pointer}
+.order{border:1px solid #f0dce2;padding:15px;border-radius:10px;margin:12px 0;overflow-wrap:anywhere}
+.order p{line-height:1.6}
+select{padding:10px;border:1px solid #edcbd6;border-radius:8px}
+.hidden{display:none}
+#message{color:#a65772}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>JAN FINDS ♡</h1>
+<p>Admin Dashboard</p>
+</header>
+
+<div class="container">
+
+<div class="box" id="loginBox">
+<h2>Admin Login</h2>
+<input id="email" type="email" placeholder="Admin Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="message"></p>
+</div>
+
+<div id="dashboard" class="hidden">
+
+<div class="box">
+<h2>Welcome Admin ♡</h2>
+<h3>Total Orders: <span id="totalOrders">0</span></h3>
+<button onclick="loadOrders()">Refresh Orders</button>
+<button onclick="logout()">Logout</button>
+</div>
+
+<div class="box">
+<h2>Customer Orders</h2>
+<div id="orders">Loading...</div>
+</div>
+
+</div>
+</div>
+
+<script>
+const SUPABASE_URL = "https://dbbvlhzjxrubbxkrwkqe.supabase.co";
+const SUPABASE_KEY = "sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
+
+const ADMIN_EMAIL = "anjansarmah799@gmail.com";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function login(){
+  const email=document.getElementById("email").value.trim();
+  const password=document.getElementById("password").value;
+
+  const {data,error}=await db.auth.signInWithPassword({
+    email,password
+  });
+
+  if(error){
+    document.getElementById("message").textContent=error.message;
+    return;
+  }
+
+  if(email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
+    await db.auth.signOut();
+    document.getElementById("message").textContent="Not authorized.";
+    return;
+  }
+
+  showDashboard();
+}
+
+async function showDashboard(){
+  const {data:{user}}=await db.auth.getUser();
+
+  if(!user || user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
+    await db.auth.signOut();
+    return;
+  }
+
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("dashboard").classList.remove("hidden");
+
+  loadOrders();
+}
+
+async function loadOrders(){
+  const box=document.getElementById("orders");
+  box.textContent="Loading orders...";
+
+  const {data,error}=await db
+    .from("orders")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+  if(error){
+    box.textContent="Error: "+error.message;
+    return;
+  }
+
+  document.getElementById("totalOrders").textContent=data.length;
+
+  if(!data.length){
+    box.textContent="No orders found.";
+    return;
+  }
+
+  box.innerHTML=data.map(order=>`
+    <div class="order">
+      <h3>Order #${safe(order.id)}</h3>
+      <p>
+      <b>Customer:</b> ${safe(order.customer_name)}<br>
+      <b>Phone:</b> ${safe(order.phone)}<br>
+      <b>Address:</b> ${safe(order.address)}<br>
+      <b>Product:</b> ${safe(order.product_name)}<br>
+      <b>Quantity:</b> ${safe(order.quantity)}<br>
+      <b>Status:</b> ${safe(order.order_status || "Pending")}
+      </p>
+      <select id="status-${safe(order.id)}">
+        <option>Pending</option>
+        <option>Confirmed</option>
+        <option>Shipped</option>
+        <option>Delivered</option>
+        <option>Cancelled</option>
+      </select>
+      <button onclick="updateStatus('${String(order.id).replace(/'/g,"")}')">
+        Update Status
+      </button>
+    </div>
+  `).join("");
+}
+
+function safe(value){
+  return String(value ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
+}
+
+async function updateStatus(id){
+  const status=document.getElementById("status-"+id).value;
+
+  const {error}=await db
+    .from("orders")
+    .update({order_status:status})
+    .eq("id",id);
+
+  if(error){
+    alert("Update failed: "+error.message);
+    return;
+  }
+
+  alert("Order status updated!");
+  loadOrders();
+}
+
+async function logout(){
+  await db.auth.signOut();
+  location.reload();
+}
+
+db.auth.getSession().then(({data})=>{
+  if(data.session) showDashboard();
+});
+</script>
+
+</body>
+</html>

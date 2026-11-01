@@ -6,61 +6,92 @@
 
 <title>JAN FINDS ♡ | Fashion Boutique</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--pink:#fcecf0;
+--dark:#a65772;
+--light:#fffaf8;
+--text:#49383e;
 }
 
 body{
 font-family:'DM Sans',sans-serif;
-background:#fffaf8;
-color:#49383e;
+background:var(--light);
+color:var(--text);
 }
 
 header{
+background:var(--pink);
+padding:20px 15px;
 text-align:center;
-padding:25px 12px;
-background:#fcecf0;
 }
 
 .logo{
 font-family:'Playfair Display',serif;
-font-size:35px;
-color:#a65772;
+font-size:32px;
 letter-spacing:3px;
+color:var(--dark);
 }
 
 .tagline{
 font-size:10px;
 letter-spacing:3px;
-margin-top:7px;
+margin-top:5px;
 color:#99717e;
 }
 
-nav{
+.topbar{
+background:white;
+padding:12px;
+position:sticky;
+top:0;
+z-index:20;
+box-shadow:0 3px 12px #00000008;
+}
+
+.search{
+max-width:650px;
+margin:auto;
+display:flex;
+align-items:center;
+background:#fff5f7;
+border:1px solid #f1dce3;
+border-radius:30px;
+padding:0 15px;
+}
+
+.search input{
+width:100%;
+padding:13px;
+border:0;
+outline:0;
+background:transparent;
+font-size:14px;
+}
+
+.nav{
 display:flex;
 justify-content:center;
 gap:22px;
-padding:17px 8px;
+padding:13px;
 background:white;
-position:sticky;
-top:0;
-z-index:5;
+overflow-x:auto;
 }
 
-nav a{
-color:#805968;
+.nav a{
 text-decoration:none;
+color:#805968;
 font-size:13px;
+white-space:nowrap;
 }
 
 .hero{
+padding:65px 18px;
 text-align:center;
-padding:75px 18px;
 background:linear-gradient(135deg,#f8dfe7,#fff1e9);
 }
 
@@ -71,165 +102,283 @@ letter-spacing:3px;
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:43px;
+font-size:40px;
 color:#98556d;
 margin:18px 0;
 }
 
 .hero p{
-font-size:14px;
+font-size:13px;
 color:#806d73;
-margin-bottom:25px;
+margin-bottom:22px;
 }
 
 .btn{
 display:inline-block;
-padding:13px 27px;
+padding:13px 25px;
+border:0;
 border-radius:30px;
 background:#ae657e;
 color:white;
-border:0;
+text-decoration:none;
 cursor:pointer;
 font-size:13px;
 }
 
-.section-title{
+.categories{
+display:flex;
+justify-content:center;
+gap:10px;
+padding:20px 10px;
+flex-wrap:wrap;
+}
+
+.category{
+border:1px solid #f0d9e1;
+background:white;
+padding:10px 17px;
+border-radius:25px;
+color:#96566d;
+cursor:pointer;
+}
+
+.category.active{
+background:#ae657e;
+color:white;
+}
+
+.heading{
 text-align:center;
-padding:45px 10px 20px;
+padding:35px 10px 15px;
 }
 
-.section-title h2,
-#cart h2{
+.heading h2{
 font-family:'Playfair Display',serif;
-color:#a65d75;
+font-size:29px;
+color:var(--dark);
 }
 
-.section-title h2{
-font-size:30px;
-}
-
-.section-title p{
+.heading p{
 font-size:12px;
 color:#9a8188;
-margin-top:8px;
+margin-top:7px;
 }
 
 .products{
 display:grid;
 grid-template-columns:repeat(2,minmax(0,1fr));
-gap:15px;
+gap:13px;
 padding:15px;
-max-width:900px;
+max-width:1100px;
 margin:auto;
 }
 
 .card{
 background:white;
-padding:9px;
-border-radius:17px;
+border-radius:15px;
+padding:8px;
 box-shadow:0 5px 20px #c99aa51c;
 min-width:0;
 }
 
-.gallery{
-display:flex;
-overflow-x:auto;
-scrollbar-width:none;
-border-radius:12px;
-}
-
-.gallery::-webkit-scrollbar{
-display:none;
-}
-
-.gallery img{
+.card-image{
 width:100%;
-height:220px;
-flex:0 0 100%;
+height:210px;
 object-fit:cover;
-border-radius:12px;
+border-radius:11px;
+cursor:pointer;
+background:#fcecf0;
 }
 
 .card h3{
 font-family:'Playfair Display',serif;
+font-size:15px;
 color:#92536a;
-font-size:17px;
-margin:12px 4px 5px;
+margin:10px 3px 5px;
 }
 
 .price{
-margin:5px;
-font-weight:700;
+font-weight:800;
+font-size:15px;
 color:#9e5c73;
+margin:5px 3px;
 }
 
 .old-price{
-color:#a99ba0;
+font-size:11px;
+color:#aaa;
 text-decoration:line-through;
-font-size:12px;
-margin-left:5px;
 font-weight:400;
+margin-left:5px;
 }
 
-.description{
-font-size:12px;
-color:#8c777f;
-margin:7px 5px;
-line-height:1.5;
+.discount{
+font-size:11px;
+color:#39966b;
+margin-left:4px;
 }
 
 .card button{
 width:100%;
-margin-top:9px;
-padding:11px;
+padding:10px;
 border:0;
 border-radius:25px;
 background:#f5e4e9;
 color:#96566d;
+margin-top:8px;
 cursor:pointer;
+font-weight:600;
 }
 
 #productMessage{
 text-align:center;
-padding:20px;
+padding:25px;
 color:#967b84;
 font-size:13px;
 }
 
+#details{
+display:none;
+padding:20px 15px;
+max-width:900px;
+margin:auto;
+}
+
+.back{
+border:0;
+background:#f5e4e9;
+color:#96566d;
+padding:10px 17px;
+border-radius:20px;
+margin-bottom:15px;
+cursor:pointer;
+}
+
+.detail-box{
+background:white;
+border-radius:18px;
+padding:13px;
+box-shadow:0 5px 20px #c99aa51c;
+}
+
+.detail-gallery{
+display:flex;
+overflow-x:auto;
+gap:10px;
+scroll-snap-type:x mandatory;
+}
+
+.detail-gallery img{
+width:100%;
+max-width:100%;
+height:380px;
+object-fit:contain;
+background:#fff7f8;
+border-radius:13px;
+flex:0 0 100%;
+scroll-snap-align:start;
+}
+
+.detail-info{
+padding:15px 5px;
+}
+
+.detail-info h2{
+font-family:'Playfair Display',serif;
+color:#98556d;
+margin-bottom:12px;
+}
+
+.detail-price{
+font-size:23px;
+font-weight:800;
+color:#a65772;
+}
+
+.detail-description{
+font-size:14px;
+line-height:1.8;
+color:#806d73;
+margin:15px 0;
+white-space:pre-wrap;
+}
+
+.actions{
+display:flex;
+gap:10px;
+}
+
+.actions button{
+flex:1;
+padding:14px 5px;
+border:0;
+border-radius:25px;
+cursor:pointer;
+font-weight:700;
+}
+
+.add{
+background:#f5e4e9;
+color:#96566d;
+}
+
+.buy{
+background:#ae657e;
+color:white;
+}
+
 #cart{
-text-align:center;
 padding:35px 15px;
 background:#fff0f3;
-margin-top:35px;
+margin-top:30px;
+text-align:center;
 }
 
 #cart h2{
+font-family:'Playfair Display',serif;
+color:#a65d75;
 margin-bottom:15px;
 }
 
 .cart-row{
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 gap:8px;
-max-width:450px;
+max-width:500px;
 margin:12px auto;
 padding:12px;
 background:white;
-border-radius:10px;
+border-radius:12px;
 font-size:13px;
 }
 
 .cart-row button{
-padding:5px 10px;
+padding:6px 10px;
 border:0;
 border-radius:8px;
 background:#f5e4e9;
 cursor:pointer;
 }
 
+.cart-controls{
+display:flex;
+gap:6px;
+align-items:center;
+}
+
 #total{
-margin:15px;
+margin:20px;
+color:#96566d;
+}
+
+.checkout{
+background:#ae657e;
+color:white;
+padding:14px 30px;
+border:0;
+border-radius:25px;
+cursor:pointer;
 }
 
 footer{
@@ -246,14 +395,38 @@ font-family:'Playfair Display',serif;
 font-size:23px;
 }
 
-@media(min-width:650px){
-.products{
-grid-template-columns:repeat(4,1fr);
+.bottom-nav{
+display:none;
 }
 
-.hero h1{
-font-size:55px;
+@media(min-width:650px){
+.products{grid-template-columns:repeat(4,1fr)}
+.hero h1{font-size:55px}
 }
+
+@media(max-width:600px){
+.hero{padding:55px 15px}
+.hero h1{font-size:35px}
+.card-image{height:190px}
+.detail-gallery img{height:330px}
+.bottom-nav{
+display:flex;
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+justify-content:space-around;
+padding:12px 5px;
+box-shadow:0 -3px 15px #00000012;
+z-index:30;
+}
+.bottom-nav a{
+text-decoration:none;
+color:#96566d;
+font-size:12px;
+}
+body{padding-bottom:55px}
 }
 </style>
 </head>
@@ -265,10 +438,19 @@ font-size:55px;
 <div class="tagline">YOUR EVERYDAY FASHION DESTINATION</div>
 </header>
 
-<nav>
+<div class="topbar">
+<div class="search">
+<span>⌕</span>
+<input id="searchInput" type="search"
+placeholder="Search your favourite outfits..."
+oninput="searchProducts()">
+</div>
+</div>
+
+<nav class="nav">
 <a href="#home">Home</a>
 <a href="#collection">Collection</a>
-<a href="#cart">Cart</a>
+<a href="#cart">Shopping Bag 🛍️</a>
 </nav>
 
 <section class="hero" id="home">
@@ -280,28 +462,56 @@ font-size:55px;
 
 <section id="collection">
 
-<div class="section-title">
+<div class="heading">
 <h2>Our Pretty Collection</h2>
 <p>Handpicked styles just for you ✨</p>
 </div>
 
-<div id="productMessage">
-Loading pretty products... ♡
+<div class="categories">
+<button class="category active" onclick="filterCategory('all',this)">All</button>
+<button class="category" onclick="filterCategory('kurti',this)">Kurtis</button>
+<button class="category" onclick="filterCategory('dress',this)">Dresses</button>
+<button class="category" onclick="filterCategory('top',this)">Tops</button>
+<button class="category" onclick="filterCategory('other',this)">Others</button>
 </div>
 
+<div id="productMessage">Loading pretty products... ♡</div>
 <div class="products" id="products"></div>
 
 </section>
 
-<section id="cart">
+<section id="details">
 
-<h2>Your Shopping Bag ♡</h2>
+<button class="back" onclick="closeDetails()">← Back to Collection</button>
 
-<div id="cartItems">
-Your cart is empty.
+<div class="detail-box">
+<div class="detail-gallery" id="detailGallery"></div>
+
+<div class="detail-info">
+<h2 id="detailName"></h2>
+<div id="detailPrice" class="detail-price"></div>
+<div id="detailDescription" class="detail-description"></div>
+
+<div class="actions">
+<button class="add" id="detailAdd">Add to Cart ♡</button>
+<button class="buy" id="detailBuy">Buy Now →</button>
 </div>
 
+</div>
+</div>
+
+</section>
+
+<section id="cart">
+<h2>Your Shopping Bag ♡</h2>
+
+<div id="cartItems">Your cart is empty.</div>
+
 <h3 id="total">Total: ₹0</h3>
+
+<button class="checkout" onclick="checkout()">
+Proceed to Checkout →
+</button>
 
 </section>
 
@@ -312,9 +522,13 @@ Your cart is empty.
 <p>Made with love ♡</p>
 </footer>
 
-<script>
+<div class="bottom-nav">
+<a href="#home">⌂ Home</a>
+<a href="#collection">♡ Shop</a>
+<a href="#cart">🛍️ Cart</a>
+</div>
 
-// SUPABASE CONNECTION
+<script>
 
 const SUPABASE_URL =
 "https://dbbvlhzjxrubbxkrwkqe.supabase.co";
@@ -322,279 +536,298 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
 
-let cart = [];
-let productsData = [];
-
-// LOAD PRODUCTS
+let cart=[];
+let productsData=[];
+let selectedCategory="all";
 
 async function loadProducts(){
 
-const container =
-document.getElementById("products");
+const container=document.getElementById("products");
+const message=document.getElementById("productMessage");
 
-const message =
-document.getElementById("productMessage");
-
-message.textContent =
-"Loading pretty products... ♡";
-
+message.textContent="Loading pretty products... ♡";
 container.replaceChildren();
 
 try{
 
-const response = await fetch(
-SUPABASE_URL + "/rest/v1/products?select=*&order=created_at.desc",
+const response=await fetch(
+SUPABASE_URL+"/rest/v1/products?select=*&order=created_at.desc",
 {
-method:"GET",
 headers:{
 "apikey":SUPABASE_KEY,
 "Authorization":"Bearer "+SUPABASE_KEY
 }
-}
-);
+});
 
 if(!response.ok){
-
-const errorText = await response.text();
-
-throw new Error(
-"Supabase error "+response.status+": "+errorText
-);
-
+throw new Error("Database error: "+await response.text());
 }
 
-productsData = await response.json();
+productsData=await response.json();
 
-if(!Array.isArray(productsData)){
-throw new Error("Invalid product data received.");
-}
-
-if(productsData.length===0){
-
-message.textContent =
-"No products available right now. ♡";
-
+if(!productsData.length){
+message.textContent="No products available right now ♡";
 return;
-
 }
 
 message.textContent="";
+renderProducts(productsData);
 
-productsData.forEach(product=>{
+}catch(error){
+console.error(error);
+message.textContent="Products could not load. Please refresh. ♡";
+}
 
-const card = document.createElement("div");
-card.className="card";
+}
 
-const gallery = document.createElement("div");
-gallery.className="gallery";
+function getImages(product){
 
-const imageFields=[
+return [
 product.image1,
 product.image2,
 product.image3
-];
-
-const images=imageFields.filter(
-url=>typeof url==="string" && url.trim()!==""
-);
-
-if(images.length===0){
-
-const fallback=document.createElement("p");
-
-fallback.textContent="Image coming soon ♡";
-
-gallery.appendChild(fallback);
-
-}else{
-
-images.forEach(url=>{
-
-const img=document.createElement("img");
-
-img.src=url;
-img.alt=product.name || "JAN FINDS Product";
-img.loading="lazy";
-
-img.onerror=()=>{
-img.alt="Image unavailable";
-};
-
-gallery.appendChild(img);
-
-});
+].filter(url=>typeof url==="string" && url.trim()!=="");
 
 }
 
-const title=document.createElement("h3");
+function renderProducts(list){
 
+const container=document.getElementById("products");
+container.replaceChildren();
+
+if(!list.length){
+document.getElementById("productMessage").textContent=
+"No matching products found ♡";
+return;
+}
+
+document.getElementById("productMessage").textContent="";
+
+list.forEach(product=>{
+
+const card=document.createElement("div");
+card.className="card";
+
+const images=getImages(product);
+
+const img=document.createElement("img");
+img.className="card-image";
+img.src=images[0] || "";
+img.alt=product.name || "JAN FINDS";
+img.loading="lazy";
+
+if(!images.length){
+img.alt="Image coming soon";
+}
+
+img.onclick=()=>openDetails(product.id);
+
+const title=document.createElement("h3");
 title.textContent=product.name || "Pretty Fashion Item";
 
 const price=document.createElement("p");
-
 price.className="price";
-price.textContent="₹"+product.price;
+price.textContent="₹"+(product.price ?? "Price unavailable");
 
 if(product.original_price){
-
 const old=document.createElement("span");
-
 old.className="old-price";
 old.textContent="₹"+product.original_price;
-
 price.appendChild(old);
 
+if(Number(product.original_price)>Number(product.price)){
+const discount=document.createElement("span");
+discount.className="discount";
+discount.textContent=
+Math.round((1-Number(product.price)/Number(product.original_price))*100)+"% OFF";
+price.appendChild(discount);
+}
 }
 
-const description=document.createElement("p");
-
-description.className="description";
-description.textContent=product.description || "";
-
 const button=document.createElement("button");
-
 button.textContent="Add to Cart ♡";
+button.onclick=()=>addCart(product);
 
-button.addEventListener("click",()=>{
-addCart(product);
-});
-
-card.append(
-gallery,
-title,
-price,
-description,
-button
-);
-
+card.append(img,title,price,button);
 container.appendChild(card);
 
 });
 
-}catch(error){
+}
 
-console.error("JAN FINDS ERROR:",error);
+function openDetails(id){
 
-message.textContent=error.message;
+const product=productsData.find(p=>String(p.id)===String(id));
+if(!product)return;
+
+document.getElementById("products").parentElement.style.display="none";
+document.getElementById("details").style.display="block";
+
+const gallery=document.getElementById("detailGallery");
+gallery.replaceChildren();
+
+const images=getImages(product);
+
+images.forEach(url=>{
+const img=document.createElement("img");
+img.src=url;
+img.alt=product.name || "Product photo";
+gallery.appendChild(img);
+});
+
+if(!images.length){
+gallery.textContent="Product photo coming soon ♡";
+}
+
+document.getElementById("detailName").textContent=
+product.name || "Pretty Fashion Item";
+
+document.getElementById("detailPrice").textContent=
+"₹"+(product.price ?? "Price unavailable");
+
+document.getElementById("detailDescription").textContent=
+product.description || "A beautiful fashion find from JAN FINDS ♡";
+
+document.getElementById("detailAdd").onclick=()=>addCart(product);
+
+document.getElementById("detailBuy").onclick=()=>{
+addCart(product);
+document.getElementById("cart").scrollIntoView({behavior:"smooth"});
+};
+
+window.scrollTo({top:0,behavior:"smooth"});
 
 }
 
+function closeDetails(){
+
+document.getElementById("details").style.display="none";
+document.getElementById("products").parentElement.style.display="block";
+
 }
 
-// ADD TO CART
+function searchProducts(){
+
+const query=document.getElementById("searchInput").value.toLowerCase();
+
+const results=productsData.filter(product=>
+String(product.name || "").toLowerCase().includes(query)
+);
+
+renderProducts(results);
+
+}
+
+function filterCategory(category,button){
+
+selectedCategory=category;
+
+document.querySelectorAll(".category").forEach(btn=>
+btn.classList.remove("active")
+);
+
+button.classList.add("active");
+
+let results=productsData;
+
+if(category!=="all"){
+results=productsData.filter(product=>
+String(product.category || "").toLowerCase().includes(category)
+);
+}
+
+renderProducts(results);
+
+}
 
 function addCart(product){
 
-const existing=cart.find(
-item=>item.id===product.id
-);
+const existing=cart.find(item=>item.id===product.id);
 
 if(existing){
-
 existing.quantity++;
-
 }else{
-
 cart.push({
-
 id:product.id,
 name:product.name,
 price:Number(product.price),
 quantity:1
-
 });
-
 }
 
 updateCart();
 
-}
+alert("Added to your shopping bag ♡");
 
-// UPDATE CART
+}
 
 function updateCart(){
 
-const container=
-document.getElementById("cartItems");
-
+const container=document.getElementById("cartItems");
 container.replaceChildren();
 
 if(cart.length===0){
-
 container.textContent="Your cart is empty.";
-
 }
 
 cart.forEach(item=>{
 
 const row=document.createElement("div");
-
 row.className="cart-row";
 
 const name=document.createElement("span");
-
-name.textContent=
-item.name+" × "+item.quantity;
+name.textContent=item.name+" × "+item.quantity;
 
 const price=document.createElement("span");
+price.textContent="₹"+(item.price*item.quantity);
 
-price.textContent=
-"₹"+(item.price*item.quantity);
+const controls=document.createElement("div");
+controls.className="cart-controls";
 
 const minus=document.createElement("button");
-
 minus.textContent="−";
-
 minus.onclick=()=>{
-
 item.quantity--;
-
 if(item.quantity<=0){
-
-cart=cart.filter(
-p=>p.id!==item.id
-);
-
+cart=cart.filter(p=>p.id!==item.id);
 }
-
 updateCart();
-
 };
 
 const plus=document.createElement("button");
-
 plus.textContent="+";
-
 plus.onclick=()=>{
-
 item.quantity++;
-
 updateCart();
-
 };
 
-row.append(
-name,
-price,
-minus,
-plus
-);
-
+controls.append(minus,plus);
+row.append(name,price,controls);
 container.appendChild(row);
 
 });
 
-const total=cart.reduce(
-(sum,item)=>sum+item.price*item.quantity,
-0
-);
+const total=cart.reduce((sum,item)=>
+sum+item.price*item.quantity,0);
 
-document.getElementById("total").textContent=
-"Total: ₹"+total;
+document.getElementById("total").textContent="Total: ₹"+total;
 
 }
 
-// START WEBSITE
+function checkout(){
+
+if(cart.length===0){
+alert("Your shopping bag is empty ♡");
+return;
+}
+
+alert(
+"Your shopping bag is ready! ♡\n\n"+
+"Total: ₹"+cart.reduce((s,i)=>s+i.price*i.quantity,0)+
+"\n\nSecure checkout will be added after order handling is set up."
+);
+
+}
 
 loadProducts();
 updateCart();

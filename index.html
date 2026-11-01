@@ -3,42 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>JAN FINDS ♡ | Fashion Boutique</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:#fffaf8;color:#49343b}
-header{background:#fcecf0;padding:17px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.logo{font-family:'Playfair Display',serif;font-size:27px;color:#a65772}
-header a{color:#a65772;text-decoration:none;font-weight:600}
-.hero{text-align:center;padding:55px 15px;background:linear-gradient(135deg,#fcecf0,#fff7f3)}
-.hero h1{font-family:'Playfair Display',serif;font-size:38px;color:#a65772}
-.hero p{margin:12px 0;color:#805b68}
-button{cursor:pointer;border:0;border-radius:25px;padding:11px 18px;background:#a65772;color:white;font-weight:600}
-.search{display:block;width:90%;max-width:500px;margin:25px auto;padding:13px;border:1px solid #edcbd6;border-radius:25px;background:white}
-.categories{display:flex;gap:10px;overflow-x:auto;padding:10px 5%;justify-content:center}
-.categories button{white-space:nowrap}
-.products{padding:25px 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:17px}
-.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 3px 15px #0000000b}
-.card img{width:100%;height:210px;object-fit:cover;background:#f8e9ed}
-.info{padding:12px}
-.info h3{font-size:14px;margin-bottom:7px}
-.price{color:#a65772;font-weight:700}
-.old{color:#999;text-decoration:line-through;font-size:12px;margin-left:5px}
-.info button{width:100%;margin-top:10px}
-.section-title{text-align:center;font-family:'Playfair Display',serif;color:#a65772;margin-top:25px}
-#cart{background:#fcecf0;margin:25px 5%;padding:20px;border-radius:15px}
-.cart-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #e9cbd4}
-#cart button{margin-top:12px}
-footer{text-align:center;background:#fcecf0;padding:25px;color:#805b68;margin-top:30px}
-.empty{text-align:center;padding:30px;color:#9b7884;grid-column:1/-1}
-@media(max-width:600px){
-.hero h1{font-size:30px}
-.products{grid-template-columns:repeat(2,minmax(0,1fr));padding:15px 4%;gap:12px}
-.card img{height:190px}
-.categories{justify-content:flex-start}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #fffaf8;
+  color: #49343b;
+}
+
+header {
+  background: #fcecf0;
+  padding: 17px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  color: #a65772;
+}
+
+header a {
+  color: #a65772;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 25px;
+  padding: 12px 18px;
+  background: #a65772;
+  color: white;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.hero {
+  text-align: center;
+  padding: 55px 15px;
+  background: linear-gradient(135deg,#fcecf0,#fff7f3);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display',serif;
+  font-size: 38px;
+  color: #a65772;
+}
+
+.hero p {
+  margin: 12px 0;
+  color: #805b68;
+}
+
+.search {
+  display: block;
+  width: 90%;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 13px;
+  border: 1px solid #edcbd6;
+  border-radius: 25px;
+  background: white;
+}
+
+.categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 5%;
+  justify-content: center;
+}
+
+.categories button {
+  white-space: nowrap;
+}
+
+.products {
+  padding: 25px 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(155px,1fr));
+  gap: 17px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px #0000000b;
+}
+
+.card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  background: #f8e9ed;
+}
+
+.info {
+  padding: 12px;
+}
+
+.info h3 {
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+
+.price {
+  color: #a65772;
+  font-weight: 700;
+}
+
+.old {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.info button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Playfair Display',serif;
+  color: #a65772;
+  margin-top: 25px;
+}
+
+.panel {
+  background: #fcecf0;
+  margin: 25px 5%;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e9cbd4;
+}
+
+.cart-row button {
+  padding: 6px 12px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0;
+  border: 1px solid #edcbd6;
+  border-radius: 10px;
+  font-family: inherit;
+  background: white;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.form-box {
+  max-width: 550px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.form-box h3 {
+  color: #a65772;
+  margin-bottom: 12px;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.cod {
+  background: #fff7f3;
+  border: 1px solid #edcbd6;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.result {
+  display: none;
+  background: white;
+  border: 1px solid #edcbd6;
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 15px;
+  overflow-wrap: anywhere;
+}
+
+.result h3 {
+  color: #a65772;
+  margin-bottom: 10px;
+}
+
+.empty {
+  text-align: center;
+  padding: 30px;
+  color: #9b7884;
+  grid-column: 1/-1;
+}
+
+footer {
+  text-align: center;
+  background: #fcecf0;
+  padding: 25px;
+  color: #805b68;
+  margin-top: 30px;
+}
+
+@media(max-width:600px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .products {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    padding: 15px 4%;
+    gap: 12px;
+  }
+
+  .card img {
+    height: 190px;
+  }
+
+  .categories {
+    justify-content: flex-start;
+  }
+
+  .panel {
+    margin: 18px 4%;
+    padding: 15px;
+  }
 }
 </style>
 </head>
@@ -56,55 +283,222 @@ footer{text-align:center;background:#fcecf0;padding:25px;color:#805b68;margin-to
   <a href="#shop"><button>Explore Collection</button></a>
 </section>
 
-<input class="search" id="search" type="search" placeholder="Search your favourite outfit...">
+<input
+  class="search"
+  id="search"
+  type="search"
+  placeholder="Search your favourite outfit..."
+>
 
 <h2 class="section-title" id="shop">Our Collection ♡</h2>
 
 <div class="categories" id="categories">
-  <button onclick="filterCategory('All')">All</button>
+  <button data-category="All">All</button>
 </div>
 
 <div class="products" id="products">
   <div class="empty">Loading pretty finds...</div>
 </div>
 
-<section id="cart">
-  <h2 class="section-title">Your Shopping Cart ♡</h2>
-  <div id="cartItems"><p>Your cart is empty.</p></div>
-  <h3 style="margin-top:15px">Total: ₹<span id="total">0</span></h3>
-  <button onclick="checkout()">Proceed to Checkout</button>
+<!-- SHOPPING CART -->
+
+<section class="panel" id="cart">
+
+<h2 class="section-title">Your Shopping Cart ♡</h2>
+
+<div id="cartItems">
+  <p>Your cart is empty.</p>
+</div>
+
+<h3 style="margin-top:15px">
+  Total: ₹<span id="total">0</span>
+</h3>
+
+<button class="full-btn" id="checkoutButton">
+  Proceed to Checkout
+</button>
+
+</section>
+
+<!-- CHECKOUT -->
+
+<section class="panel" id="checkout">
+
+<h2 class="section-title">Checkout ♡</h2>
+
+<div class="form-box">
+
+<h3>Delivery Information</h3>
+
+<form id="checkoutForm">
+
+<input
+  type="text"
+  id="customerName"
+  placeholder="Your Full Name"
+  maxlength="100"
+  required
+>
+
+<input
+  type="tel"
+  id="phone"
+  placeholder="10 Digit Mobile Number"
+  maxlength="10"
+  pattern="[0-9]{10}"
+  required
+>
+
+<textarea
+  id="address"
+  placeholder="Complete Delivery Address"
+  maxlength="500"
+  required
+></textarea>
+
+<div class="cod">
+  <strong>Payment Method</strong>
+  <p>✓ Cash on Delivery (COD)</p>
+  <small>Pay when your order is delivered.</small>
+</div>
+
+<p>
+  Total Amount: ₹<strong id="checkoutTotal">0</strong>
+</p>
+
+<button
+  type="submit"
+  class="full-btn"
+  id="placeOrderButton"
+>
+  Place Order ♡
+</button>
+
+</form>
+
+<div class="result" id="orderResult"></div>
+
+</div>
+</section>
+
+<!-- ORDER TRACKING -->
+
+<section class="panel" id="tracking">
+
+<h2 class="section-title">Track Your Order ♡</h2>
+
+<div class="form-box">
+
+<h3>Find Your Order</h3>
+
+<form id="trackingForm">
+
+<input
+  type="text"
+  id="trackingId"
+  placeholder="Enter Order ID"
+  required
+>
+
+<input
+  type="tel"
+  id="trackingPhone"
+  placeholder="Registered 10 Digit Phone"
+  maxlength="10"
+  pattern="[0-9]{10}"
+  required
+>
+
+<button type="submit" class="full-btn" id="trackButton">
+  Track Order
+</button>
+
+</form>
+
+<div class="result" id="trackingResult"></div>
+
+</div>
 </section>
 
 <footer>
-  <h2 class="logo">JAN FINDS ♡</h2>
-  <p>Thank you for visiting our little boutique.</p>
-  <p>© 2026 JAN FINDS</p>
+
+<h2 class="logo">JAN FINDS ♡</h2>
+
+<p>Thank you for visiting our little boutique.</p>
+
+<p>© 2026 JAN FINDS</p>
+
 </footer>
 
 <script>
-const SUPABASE_URL = "https://dbbvlhzjxrubbxkrwkqe.supabase.co";
-const SUPABASE_KEY = "sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
-const ORDER_URL = SUPABASE_URL + "/functions/v1/create-order";
+
+const SUPABASE_URL =
+"https://dbbvlhzjxrubbxkrwkqe.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
+
+const ORDER_URL =
+SUPABASE_URL + "/functions/v1/create-order";
 
 let allProducts = [];
 let cart = [];
 let activeCategory = "All";
 
-async function loadProducts(){
-  const box = document.getElementById("products");
+const $ = id => document.getElementById(id);
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
+
+async function apiRequest(body) {
+
+  const response = await fetch(ORDER_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY
+    },
+    body: JSON.stringify(body)
+  });
+
+  const result = await response.json();
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.error || "Request failed");
+  }
+
+  return result;
+}
+
+// LOAD PRODUCTS
+
+async function loadProducts() {
+
+  const box = $("products");
 
   try {
+
     const response = await fetch(
-      SUPABASE_URL + "/rest/v1/products?select=*&order=created_at.desc",
+      SUPABASE_URL +
+      "/rest/v1/products?select=*&order=created_at.desc",
       {
-        headers:{
-          "apikey":SUPABASE_KEY,
-          "Authorization":"Bearer " + SUPABASE_KEY
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY
         }
       }
     );
 
-    if(!response.ok) throw new Error("Products could not load");
+    if (!response.ok) {
+      throw new Error("Products could not load");
+    }
 
     allProducts = await response.json();
 
@@ -112,184 +506,447 @@ async function loadProducts(){
     displayProducts(allProducts);
 
   } catch(error) {
-    box.innerHTML = '<p class="empty">Products load nahi ho paaye. Please try again.</p>';
+
+    box.innerHTML =
+      '<p class="empty">Products load nahi ho paaye. Please try again.</p>';
+
   }
 }
 
-function showCategories(){
-  const categories = ["All", ...new Set(
-    allProducts.map(p => p.category).filter(Boolean)
-  )];
+// CATEGORIES
 
-  document.getElementById("categories").innerHTML =
-    categories.map(c =>
-      `<button onclick="filterCategory(${JSON.stringify(c)})">${c}</button>`
-    ).join("");
+function showCategories() {
+
+  const categories = [
+    "All",
+    ...new Set(
+      allProducts.map(p => p.category).filter(Boolean)
+    )
+  ];
+
+  $("categories").innerHTML = categories.map(c => `
+    <button data-category="${escapeHTML(c)}">
+      ${escapeHTML(c)}
+    </button>
+  `).join("");
 }
 
-function filterCategory(category){
-  activeCategory = category;
+$("categories").addEventListener("click", event => {
+
+  const button = event.target.closest("[data-category]");
+
+  if (!button) return;
+
+  activeCategory = button.dataset.category;
   filterProducts();
-}
 
-function filterProducts(){
-  const search = document.getElementById("search").value.toLowerCase();
+});
+
+// SEARCH
+
+$("search").addEventListener("input", filterProducts);
+
+function filterProducts() {
+
+  const search = $("search").value.toLowerCase();
 
   const filtered = allProducts.filter(p => {
+
     const matchesCategory =
-      activeCategory === "All" || p.category === activeCategory;
+      activeCategory === "All" ||
+      p.category === activeCategory;
 
     const matchesSearch =
       (p.name || "").toLowerCase().includes(search);
 
     return matchesCategory && matchesSearch;
+
   });
 
   displayProducts(filtered);
 }
 
-document.getElementById("search").addEventListener("input",filterProducts);
+// DISPLAY PRODUCTS
 
-function displayProducts(products){
-  const box = document.getElementById("products");
+function displayProducts(products) {
 
-  if(!products.length){
-    box.innerHTML = '<p class="empty">No products found ♡</p>';
+  const box = $("products");
+
+  if (!products.length) {
+
+    box.innerHTML =
+      '<p class="empty">No products found ♡</p>';
+
     return;
   }
 
   box.innerHTML = products.map(p => `
+
     <div class="card">
-      <img src="${escapeHTML(p.image1 || "")}" alt="${escapeHTML(p.name || "Product")}">
+
+      <img
+        src="${escapeHTML(p.image1 || "")}"
+        alt="${escapeHTML(p.name || "Product")}"
+        loading="lazy"
+      >
+
       <div class="info">
+
         <h3>${escapeHTML(p.name || "Fashion Find")}</h3>
-        <span class="price">₹${Number(p.price) || 0}</span>
-        ${p.original_price ? `<span class="old">₹${Number(p.original_price)}</span>` : ""}
-        <button onclick="addToCart('${String(p.id).replace(/'/g,"")}')">
+
+        <span class="price">
+          ₹${Number(p.price) || 0}
+        </span>
+
+        ${p.original_price ? `
+          <span class="old">
+            ₹${Number(p.original_price)}
+          </span>
+        ` : ""}
+
+        <button
+          data-add="${escapeHTML(p.id)}"
+        >
           Add to Cart ♡
         </button>
+
       </div>
+
     </div>
+
   `).join("");
+
 }
 
-function escapeHTML(value){
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[char]);
-}
+// ADD TO CART
 
-function addToCart(id){
-  const product = allProducts.find(p => String(p.id) === String(id));
-  if(!product) return;
+$("products").addEventListener("click", event => {
 
-  const existing = cart.find(item => String(item.id) === String(id));
+  const button = event.target.closest("[data-add]");
 
-  if(existing){
+  if (!button) return;
+
+  addToCart(button.dataset.add);
+
+});
+
+function addToCart(id) {
+
+  const product = allProducts.find(
+    p => String(p.id) === String(id)
+  );
+
+  if (!product) return;
+
+  const existing = cart.find(
+    item => String(item.id) === String(id)
+  );
+
+  if (existing) {
+
+    if (existing.quantity >= 20) {
+      alert("Maximum quantity is 20.");
+      return;
+    }
+
     existing.quantity++;
+
   } else {
+
     cart.push({
-      id:product.id,
-      name:product.name,
-      price:Number(product.price),
-      quantity:1
+      id: product.id,
+      name: product.name,
+      price: Number(product.price),
+      quantity: 1
     });
+
   }
 
   updateCart();
-  alert("Added to cart ♡");
+
 }
 
-function updateCart(){
-  const box = document.getElementById("cartItems");
+// UPDATE CART
+
+function updateCart() {
+
+  const box = $("cartItems");
+
   let total = 0;
   let count = 0;
 
-  if(!cart.length){
+  if (!cart.length) {
+
     box.innerHTML = "<p>Your cart is empty.</p>";
+
   } else {
+
     box.innerHTML = cart.map((item,index) => {
+
       total += item.price * item.quantity;
       count += item.quantity;
 
       return `
+
         <div class="cart-row">
-          <span>${escapeHTML(item.name)} × ${item.quantity}</span>
-          <span>₹${item.price * item.quantity}
-          <button onclick="removeItem(${index})">×</button></span>
+
+          <span>
+            ${escapeHTML(item.name)}
+            × ${item.quantity}
+          </span>
+
+          <span>
+            ₹${item.price * item.quantity}
+
+            <button data-remove="${index}">
+              ×
+            </button>
+
+          </span>
+
         </div>
+
       `;
+
     }).join("");
+
   }
 
-  document.getElementById("total").textContent = total;
-  document.getElementById("cartCount").textContent = count;
+  $("total").textContent = total;
+  $("checkoutTotal").textContent = total;
+  $("cartCount").textContent = count;
+
 }
 
-function removeItem(index){
-  cart.splice(index,1);
+$("cartItems").addEventListener("click", event => {
+
+  const button = event.target.closest("[data-remove]");
+
+  if (!button) return;
+
+  cart.splice(Number(button.dataset.remove),1);
+
   updateCart();
-}
 
-async function checkout(){
-  if(!cart.length){
+});
+
+$("checkoutButton").addEventListener("click", () => {
+
+  if (!cart.length) {
     alert("Your cart is empty!");
     return;
   }
 
-  const customerName = prompt("Enter customer name:");
-  if(!customerName) return;
+  $("checkout").scrollIntoView({
+    behavior: "smooth"
+  });
 
-  const phone = prompt("Enter phone number:");
-  if(!phone) return;
+});
 
-  const address = prompt("Enter delivery address:");
-  if(!address) return;
+// CHECKOUT
 
-  if(!/^[0-9]{10}$/.test(phone)){
-    alert("Please enter a valid 10-digit phone number.");
+$("checkoutForm").addEventListener("submit", async event => {
+
+  event.preventDefault();
+
+  if (!cart.length) {
+    alert("Your cart is empty!");
     return;
   }
 
-  if(!confirm("Submit this test order? Use dummy details only.")){
+  const customerName = $("customerName").value.trim();
+  const phone = $("phone").value.trim();
+  const address = $("address").value.trim();
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("Enter a valid 10-digit phone number.");
     return;
   }
+
+  const button = $("placeOrderButton");
+
+  button.disabled = true;
+  button.textContent = "Placing Order...";
 
   try {
-    for(const item of cart){
-      const response = await fetch(ORDER_URL,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
-          "apikey":SUPABASE_KEY
-        },
-        body:JSON.stringify({
-          customer_name:customerName,
-          phone:phone,
-          address:address,
-          product_name:item.name,
-          quantity:item.quantity
-        })
-      });
 
-      const result = await response.json();
+    const result = await apiRequest({
 
-      if(!response.ok || !result.success){
-        throw new Error(result.error || "Order failed");
-      }
-    }
+      action: "create",
 
-    alert("Test order submitted successfully!");
+      customer_name: customerName,
+
+      phone: phone,
+
+      address: address,
+
+      items: cart.map(item => ({
+        product_id: String(item.id),
+        quantity: item.quantity
+      }))
+
+    });
+
+    const orders = result.orders || [];
+
+    let orderHTML = `
+      <h3>🎉 Order Placed Successfully!</h3>
+      <p>Thank you for shopping with JAN FINDS ♡</p>
+      <p><strong>Payment:</strong> Cash on Delivery</p>
+    `;
+
+    let grandTotal = 0;
+
+    orders.forEach(order => {
+
+      grandTotal += Number(order.total_amount) || 0;
+
+      orderHTML += `
+        <hr style="margin:12px 0">
+
+        <p><strong>Product:</strong>
+          ${escapeHTML(order.product_name)}
+        </p>
+
+        <p><strong>Order ID:</strong>
+          ${escapeHTML(order.id)}
+        </p>
+
+        <p><strong>Quantity:</strong>
+          ${Number(order.quantity)}
+        </p>
+
+        <p><strong>Status:</strong>
+          ${escapeHTML(order.order_status)}
+        </p>
+      `;
+
+    });
+
+    orderHTML += `
+      <hr style="margin:12px 0">
+
+      <h3>Total: ₹${grandTotal}</h3>
+
+      <p>Save your Order ID to track your order.</p>
+    `;
+
+    $("orderResult").innerHTML = orderHTML;
+    $("orderResult").style.display = "block";
+
     cart = [];
     updateCart();
 
+    $("checkoutForm").reset();
+
+    $("orderResult").scrollIntoView({
+      behavior: "smooth"
+    });
+
   } catch(error) {
+
     alert("Order failed: " + error.message);
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "Place Order ♡";
+
   }
-}
+
+});
+
+// ORDER TRACKING
+
+$("trackingForm").addEventListener("submit", async event => {
+
+  event.preventDefault();
+
+  const orderId = $("trackingId").value.trim();
+  const phone = $("trackingPhone").value.trim();
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("Enter a valid 10-digit phone number.");
+    return;
+  }
+
+  const button = $("trackButton");
+
+  button.disabled = true;
+  button.textContent = "Checking...";
+
+  const box = $("trackingResult");
+
+  box.style.display = "none";
+
+  try {
+
+    const result = await apiRequest({
+
+      action: "track",
+
+      order_id: orderId,
+
+      phone: phone
+
+    });
+
+    const order = result.order;
+
+    box.innerHTML = `
+
+      <h3>Order Details ♡</h3>
+
+      <p><strong>Order ID:</strong>
+        ${escapeHTML(order.id)}
+      </p>
+
+      <p><strong>Product:</strong>
+        ${escapeHTML(order.product_name)}
+      </p>
+
+      <p><strong>Quantity:</strong>
+        ${Number(order.quantity)}
+      </p>
+
+      <p><strong>Amount:</strong>
+        ₹${Number(order.total_amount) || 0}
+      </p>
+
+      <p><strong>Order Status:</strong>
+        ${escapeHTML(order.order_status)}
+      </p>
+
+      <p><strong>Payment:</strong> Cash on Delivery</p>
+
+    `;
+
+    box.style.display = "block";
+
+  } catch(error) {
+
+    box.innerHTML = `
+      <h3>Order Not Found</h3>
+      <p>${escapeHTML(error.message)}</p>
+      <p>Please check your Order ID and phone number.</p>
+    `;
+
+    box.style.display = "block";
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent = "Track Order";
+
+  }
+
+});
+
+// START
 
 loadProducts();
 updateCart();
+
 </script>
 
 </body>

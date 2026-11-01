@@ -1,176 +1,713 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JAN FINDS | Admin</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
-*{box-sizing:border-box}
-body{margin:0;background:#fffaf8;font-family:Arial,sans-serif;color:#49343b}
-header{background:#fcecf0;padding:20px;text-align:center;color:#a65772}
-h1{font-family:Georgia,serif}
-.container{max-width:900px;margin:25px auto;padding:15px}
-.box{background:white;padding:22px;border-radius:15px;box-shadow:0 3px 15px #0001;margin-bottom:20px}
-input{width:100%;padding:13px;margin:9px 0;border:1px solid #edcbd6;border-radius:8px}
-button{background:#a65772;color:white;border:0;padding:12px 18px;border-radius:8px;cursor:pointer;margin:4px}
-.order{border:1px solid #f0dce2;padding:15px;border-radius:10px;margin:12px 0;overflow-wrap:anywhere}
-.order p{line-height:1.6}
-select{padding:10px;border:1px solid #edcbd6;border-radius:8px}
-.hidden{display:none}
-#message{color:#a65772}
-</style></head><body><header>
-<h1>JAN FINDS ♡</h1>
-<p>Admin Dashboard</p>
-</header><div class="container"><div class="box" id="loginBox">
-<h2>Admin Login</h2>
-<input id="email" type="email" placeholder="Admin Email">
-<input id="password" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
-<p id="message"></p>
-</div><div id="dashboard" class="hidden"><div class="box">
-<h2>Welcome Admin ♡</h2>
-<h3>Total Orders: <span id="totalOrders">0</span></h3>
-<button onclick="loadOrders()">Refresh Orders</button>
-<button onclick="logout()">Logout</button>
-</div><div class="box">
-<h2>Customer Orders</h2>
-<div id="orders">Loading...</div>
-</div></div>
-</div><script>
-const SUPABASE_URL = "https://dbbvlhzjxrubbxkrwkqe.supabase.co";
-const SUPABASE_KEY = "sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
+<title>JAN FINDS ♡ | Admin Dashboard</title>
 
-const ADMIN_EMAIL = "anjansarmah799@gmail.com";
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:#fffaf8;
+ font-family:Arial,sans-serif;
+ color:#49343b;
+}
+
+header{
+ background:#fcecf0;
+ padding:22px 15px;
+ text-align:center;
+ color:#a65772;
+}
+
+header h1{
+ font-family:Georgia,serif;
+ margin:0;
+ font-size:30px;
+}
+
+.container{
+ max-width:1100px;
+ margin:25px auto;
+ padding:15px;
+}
+
+.box{
+ background:white;
+ padding:22px;
+ border-radius:16px;
+ box-shadow:0 3px 15px #0000000b;
+ margin-bottom:20px;
+}
+
+h2{
+ color:#a65772;
+}
+
+input{
+ width:100%;
+ padding:13px;
+ margin:9px 0;
+ border:1px solid #edcbd6;
+ border-radius:9px;
+}
+
+button{
+ background:#a65772;
+ color:white;
+ border:0;
+ padding:12px 18px;
+ border-radius:9px;
+ cursor:pointer;
+ margin:4px;
+ font-weight:bold;
+}
+
+button:disabled{
+ opacity:.6;
+ cursor:not-allowed;
+}
+
+.hidden{
+ display:none!important;
+}
+
+#message{
+ color:#a65772;
+}
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:14px;
+ margin:20px 0;
+}
+
+.stat{
+ background:#fff7f8;
+ border:1px solid #f3dce3;
+ padding:20px 12px;
+ border-radius:13px;
+ text-align:center;
+}
+
+.stat p{
+ margin:0;
+ color:#906c78;
+ font-size:13px;
+}
+
+.stat h2{
+ font-size:25px;
+ margin:12px 0 0;
+}
+
+.order{
+ border:1px solid #f0dce2;
+ padding:17px;
+ border-radius:12px;
+ margin:14px 0;
+ overflow-wrap:anywhere;
+}
+
+.order p{
+ line-height:1.7;
+ font-size:14px;
+}
+
+.order select{
+ padding:11px;
+ border:1px solid #edcbd6;
+ border-radius:8px;
+ background:white;
+}
+
+.order-price{
+ font-size:19px;
+ color:#a65772;
+ font-weight:bold;
+}
+
+.badge{
+ display:inline-block;
+ background:#fcecf0;
+ color:#a65772;
+ padding:6px 12px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.section-title{
+ margin-top:30px;
+}
+
+.refresh{
+ background:#49343b;
+}
+
+#orders{
+ margin-top:15px;
+}
+
+.empty{
+ text-align:center;
+ padding:30px;
+ color:#9b7884;
+}
+
+@media(max-width:600px){
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .stat h2{
+  font-size:21px;
+ }
+
+ .container{
+  padding:10px;
+ }
+
+ .box{
+  padding:16px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <h1>JAN FINDS ♡</h1>
+ <p>Admin Dashboard</p>
+</header>
+
+<div class="container">
+
+<!-- LOGIN -->
+
+<div class="box" id="loginBox">
+
+<h2>Admin Login ♡</h2>
+
+<input
+ id="email"
+ type="email"
+ placeholder="Admin Email"
+>
+
+<input
+ id="password"
+ type="password"
+ placeholder="Password"
+>
+
+<button onclick="login()" id="loginButton">
+ Login
+</button>
+
+<p id="message"></p>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="hidden">
+
+<div class="box">
+
+<h2>Welcome Admin ♡</h2>
+
+<p>Manage your JAN FINDS boutique.</p>
+
+<button onclick="loadOrders()" class="refresh">
+ ↻ Refresh Dashboard
+</button>
+
+<button onclick="logout()">
+ Logout
+</button>
+
+</div>
+
+
+<!-- SALES STATS -->
+
+<h2 class="section-title">
+ Business Overview ♡
+</h2>
+
+<div class="stats">
+
+<div class="stat">
+ <p>Total Orders</p>
+ <h2 id="totalOrders">0</h2>
+</div>
+
+<div class="stat">
+ <p>Total Sales*</p>
+ <h2 id="totalRevenue">₹0</h2>
+</div>
+
+<div class="stat">
+ <p>Today's Sales*</p>
+ <h2 id="todaySales">₹0</h2>
+</div>
+
+<div class="stat">
+ <p>Pending Orders</p>
+ <h2 id="pendingOrders">0</h2>
+</div>
+
+<div class="stat">
+ <p>Confirmed Orders</p>
+ <h2 id="confirmedOrders">0</h2>
+</div>
+
+<div class="stat">
+ <p>Shipped Orders</p>
+ <h2 id="shippedOrders">0</h2>
+</div>
+
+<div class="stat">
+ <p>Delivered Orders</p>
+ <h2 id="deliveredOrders">0</h2>
+</div>
+
+<div class="stat">
+ <p>Cancelled Orders</p>
+ <h2 id="cancelledOrders">0</h2>
+</div>
+
+</div>
+
+<p style="font-size:12px;color:#967681">
+ *Sales figures show order value excluding cancelled orders,
+ not money actually collected.
+</p>
+
+
+<!-- CUSTOMER ORDERS -->
+
+<div class="box">
+
+<h2>Customer Orders ♡</h2>
+
+<div id="orders">
+ Loading orders...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://dbbvlhzjxrubbxkrwkqe.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
+
+const ADMIN_EMAIL =
+"anjansarmah799@gmail.com";
 
 const db = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+ SUPABASE_URL,
+ SUPABASE_KEY
 );
 
-async function login(){
-  const email=document.getElementById("email").value.trim();
-  const password=document.getElementById("password").value;
+const $ = id => document.getElementById(id);
 
-  const {data,error}=await db.auth.signInWithPassword({
-    email,password
-  });
+let allOrders = [];
 
-  if(error){
-    document.getElementById("message").textContent=error.message;
-    return;
-  }
-
-  if(data.user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
-    await db.auth.signOut();
-    document.getElementById("message").textContent="Not authorized.";
-    return;
-  }
-
-  showDashboard();
-}
-
-async function showDashboard(){
-  const {data:{user}}=await db.auth.getUser();
-
-  if(!user || user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
-    await db.auth.signOut();
-    return;
-  }
-
-  document.getElementById("loginBox").classList.add("hidden");
-  document.getElementById("dashboard").classList.remove("hidden");
-
-  loadOrders();
-}
-
-async function loadOrders(){
-  const box=document.getElementById("orders");
-  box.textContent="Loading orders...";
-
-  const {data,error}=await db
-    .from("orders")
-    .select("*")
-    .order("created_at",{ascending:false});
-
-  if(error){
-    box.textContent="Error: "+error.message;
-    return;
-  }
-
-  document.getElementById("totalOrders").textContent=data.length;
-
-  if(!data.length){
-    box.textContent="No orders found.";
-    return;
-  }
-
-  box.innerHTML=data.map(order=>{
-    const status=["Pending","Confirmed","Shipped","Delivered","Cancelled"]
-      .includes(order.order_status)
-      ? order.order_status
-      : "Pending";
-
-    return `
-    <div class="order">
-      <h3>Order #${safe(order.id)}</h3>
-
-      <p>
-      <b>Customer:</b> ${safe(order.customer_name)}<br>
-      <b>Phone:</b> ${safe(order.phone)}<br>
-      <b>Address:</b> ${safe(order.address)}<br>
-      <b>Product:</b> ${safe(order.product_name)}<br>
-      <b>Quantity:</b> ${safe(order.quantity)}<br>
-      <b>Status:</b> ${safe(status)}
-      </p>
-
-      <select id="status-${safe(order.id)}">
-        <option value="Pending" ${status==="Pending"?"selected":""}>Pending</option>
-        <option value="Confirmed" ${status==="Confirmed"?"selected":""}>Confirmed</option>
-        <option value="Shipped" ${status==="Shipped"?"selected":""}>Shipped</option>
-        <option value="Delivered" ${status==="Delivered"?"selected":""}>Delivered</option>
-        <option value="Cancelled" ${status==="Cancelled"?"selected":""}>Cancelled</option>
-      </select>
-
-      <button onclick="updateStatus('${String(order.id).replace(/'/g,"")}')">
-        Update Status
-      </button>
-    </div>
-    `;
-  }).join("");
-}
+const STATUSES = [
+ "Pending",
+ "Confirmed",
+ "Shipped",
+ "Delivered",
+ "Cancelled"
+];
 
 function safe(value){
-  return String(value ?? "").replace(/[&<>"']/g,c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  })[c]);
+ return String(value ?? "").replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ })[c]);
 }
 
-async function updateStatus(id){
-  const status=document.getElementById("status-"+id).value;
+function money(value){
+ return "₹"+Number(value||0).toLocaleString("en-IN",{
+  maximumFractionDigits:2
+ });
+}
 
-  const {error}=await db
-    .from("orders")
-    .update({order_status:status})
-    .eq("id",id);
+function getStatus(order){
+ const status = STATUSES.find(
+  s=>s.toLowerCase() ===
+  String(order.order_status||"Pending").toLowerCase()
+ );
 
-  if(error){
-    alert("Update failed: "+error.message);
-    return;
+ return status || "Pending";
+}
+
+
+// LOGIN
+
+async function login(){
+
+ const email=$("email").value.trim();
+ const password=$("password").value;
+
+ $("message").textContent="Checking login...";
+
+ const button=$("loginButton");
+ button.disabled=true;
+
+ try{
+
+  const {data,error}=await db.auth.signInWithPassword({
+   email,
+   password
+  });
+
+  if(error) throw error;
+
+  if(
+   !data.user.email ||
+   data.user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()
+  ){
+   await db.auth.signOut();
+   throw new Error("Not authorized.");
   }
 
-  alert("Order status updated!");
-  await loadOrders();
+  await showDashboard();
+
+ }catch(error){
+
+  $("message").textContent=error.message;
+
+ }finally{
+
+  button.disabled=false;
+
+ }
+
 }
+
+
+// SHOW DASHBOARD
+
+async function showDashboard(){
+
+ const {data:{user}}=await db.auth.getUser();
+
+ if(
+  !user ||
+  !user.email ||
+  user.email.toLowerCase() !== ADMIN_EMAIL.toLowerCase()
+ ){
+  await db.auth.signOut();
+  return;
+ }
+
+ $("loginBox").classList.add("hidden");
+ $("dashboard").classList.remove("hidden");
+
+ await loadOrders();
+
+}
+
+
+// LOAD ORDERS
+
+async function loadOrders(){
+
+ const box=$("orders");
+
+ box.innerHTML="Loading orders...";
+
+ try{
+
+  const {data,error}=await db
+   .from("orders")
+   .select("*")
+   .order("created_at",{ascending:false});
+
+  if(error) throw error;
+
+  allOrders=data||[];
+
+  updateStats();
+  displayOrders();
+
+ }catch(error){
+
+  box.innerHTML=
+   '<p class="empty">Error: '+safe(error.message)+'</p>';
+
+ }
+
+}
+
+
+// UPDATE STATISTICS
+
+function updateStats(){
+
+ const today = new Date().toLocaleDateString("en-CA");
+
+ let pending=0;
+ let confirmed=0;
+ let shipped=0;
+ let delivered=0;
+ let cancelled=0;
+
+ let revenue=0;
+ let todayRevenue=0;
+
+ allOrders.forEach(order=>{
+
+  const status=getStatus(order);
+
+  const amount=Number(order.total_amount)||0;
+
+  if(status==="Pending") pending++;
+  if(status==="Confirmed") confirmed++;
+  if(status==="Shipped") shipped++;
+  if(status==="Delivered") delivered++;
+  if(status==="Cancelled") cancelled++;
+
+  if(status!=="Cancelled"){
+
+   revenue+=amount;
+
+   if(order.created_at){
+
+    const orderDate=new Date(order.created_at)
+     .toLocaleDateString("en-CA");
+
+    if(orderDate===today){
+     todayRevenue+=amount;
+    }
+
+   }
+
+  }
+
+ });
+
+ $("totalOrders").textContent=allOrders.length;
+
+ $("totalRevenue").textContent=money(revenue);
+
+ $("todaySales").textContent=money(todayRevenue);
+
+ $("pendingOrders").textContent=pending;
+
+ $("confirmedOrders").textContent=confirmed;
+
+ $("shippedOrders").textContent=shipped;
+
+ $("deliveredOrders").textContent=delivered;
+
+ $("cancelledOrders").textContent=cancelled;
+
+}
+
+
+// DISPLAY ORDERS
+
+function displayOrders(){
+
+ const box=$("orders");
+
+ if(!allOrders.length){
+
+  box.innerHTML=
+   '<p class="empty">No orders found ♡</p>';
+
+  return;
+
+ }
+
+ box.innerHTML=allOrders.map(order=>{
+
+  const status=getStatus(order);
+
+  const date=order.created_at
+   ? new Date(order.created_at).toLocaleString("en-IN")
+   : "Not available";
+
+  const options=STATUSES.map(s=>`
+   <option value="${s}" ${status===s?"selected":""}>
+    ${s}
+   </option>
+  `).join("");
+
+  return `
+
+  <div class="order">
+
+   <h3>Order #${safe(order.id)}</h3>
+
+   <span class="badge">${safe(status)}</span>
+
+   <p>
+
+    <b>Customer:</b>
+    ${safe(order.customer_name)}
+    <br>
+
+    <b>Phone:</b>
+    ${safe(order.phone)}
+    <br>
+
+    <b>Address:</b>
+    ${safe(order.address)}
+    <br>
+
+    <b>Product:</b>
+    ${safe(order.product_name)}
+    <br>
+
+    <b>Quantity:</b>
+    ${safe(order.quantity)}
+    <br>
+
+    <b>Order Date:</b>
+    ${safe(date)}
+
+   </p>
+
+   <p class="order-price">
+    ${money(order.total_amount)}
+   </p>
+
+   <select data-status-id="${safe(order.id)}">
+    ${options}
+   </select>
+
+   <button
+    type="button"
+    data-update-id="${safe(order.id)}"
+   >
+    Update Status
+   </button>
+
+  </div>
+
+  `;
+
+ }).join("");
+
+}
+
+
+// UPDATE STATUS
+
+async function updateStatus(id){
+
+ const select=document.querySelector(
+  '[data-status-id="'+CSS.escape(String(id))+'"]'
+ );
+
+ if(!select)return;
+
+ const status=select.value;
+
+ if(!STATUSES.includes(status)){
+  alert("Invalid status.");
+  return;
+ }
+
+ const {data:{user}}=await db.auth.getUser();
+
+ if(
+  !user ||
+  user.email?.toLowerCase()!==ADMIN_EMAIL.toLowerCase()
+ ){
+  alert("Please login again.");
+  return;
+ }
+
+ try{
+
+  const {error}=await db
+   .from("orders")
+   .update({order_status:status})
+   .eq("id",id);
+
+  if(error) throw error;
+
+  alert("Order status updated successfully! ♡");
+
+  await loadOrders();
+
+ }catch(error){
+
+  alert("Update failed: "+error.message);
+
+ }
+
+}
+
+
+// ORDER BUTTON EVENTS
+
+$("orders").addEventListener("click",event=>{
+
+ const button=event.target.closest("[data-update-id]");
+
+ if(!button)return;
+
+ updateStatus(button.dataset.updateId);
+
+});
+
+
+// LOGOUT
 
 async function logout(){
-  await db.auth.signOut();
-  location.reload();
+
+ await db.auth.signOut();
+
+ location.reload();
+
 }
 
-db.auth.getSession().then(({data})=>{
-  if(data.session) showDashboard();
+
+// CHECK EXISTING SESSION
+
+db.auth.onAuthStateChange((event,session)=>{
+
+ if(event==="SIGNED_IN" && session){
+  setTimeout(showDashboard,0);
+ }
+
 });
-</script></body>
+
+db.auth.getSession().then(({data})=>{
+
+ if(data.session){
+  showDashboard();
+ }
+
+});
+
+</script>
+
+</body>
 </html>

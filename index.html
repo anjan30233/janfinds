@@ -3,54 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>JAN FINDS ♡ | Fashion Boutique</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:#fffaf8;color:#49383e}
-header{text-align:center;padding:25px 12px;background:#fcecf0}
-.logo{font-family:'Playfair Display',serif;font-size:35px;color:#a65772;letter-spacing:3px}
-.tagline{font-size:10px;letter-spacing:3px;margin-top:7px;color:#99717e}
-nav{display:flex;justify-content:center;gap:22px;padding:17px 8px;background:white;position:sticky;top:0;z-index:5}
-nav a{color:#805968;text-decoration:none;font-size:13px}
-.hero{text-align:center;padding:80px 18px;background:linear-gradient(135deg,#f8dfe7,#fff1e9)}
-.hero small{color:#a66b7d;letter-spacing:3px}
-.hero h1{font-family:'Playfair Display',serif;font-size:43px;color:#98556d;margin:18px 0}
-.hero p{font-size:14px;color:#806d73;margin-bottom:25px}
-.btn{display:inline-block;padding:13px 27px;border-radius:30px;background:#ae657e;color:white;border:0;cursor:pointer;font-size:13px}
-.section-title{text-align:center;padding:45px 10px 20px}
-.section-title h2,#cart h2,#checkout h2{font-family:'Playfair Display',serif;color:#a65d75}
-.section-title h2{font-size:30px}
-.section-title p{font-size:12px;color:#9a8188;margin-top:8px}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;padding:15px;max-width:900px;margin:auto}
-.card{background:white;padding:9px;border-radius:17px;box-shadow:0 5px 20px #c99aa51c;min-width:0}
-.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:12px}
-.gallery::-webkit-scrollbar{display:none}
-.gallery img{width:100%;height:220px;flex:0 0 100%;object-fit:cover;scroll-snap-align:start;border-radius:12px}
-.swipe-note{text-align:center;font-size:10px;color:#a88a94;margin-top:5px}
-.card h3{font-family:'Playfair Display',serif;color:#92536a;font-size:17px;margin:12px 4px 5px}
-.price{margin:5px;font-weight:700;color:#9e5c73}
-.old-price{color:#a99ba0;text-decoration:line-through;font-size:12px;margin-left:5px;font-weight:400}
-.description{font-size:12px;color:#8c777f;margin:7px 5px;line-height:1.5}
-.card button{width:100%;margin-top:9px;padding:11px;border:0;border-radius:25px;background:#f5e4e9;color:#96566d;cursor:pointer}
-#productMessage{text-align:center;padding:20px;color:#967b84;font-size:13px}
-#cart{text-align:center;padding:35px 15px;background:#fff0f3;margin-top:35px}
-#cart h2{margin-bottom:15px}
-.cart-row{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:450px;margin:12px auto;padding:12px;background:white;border-radius:10px;font-size:13px}
-.cart-row button{padding:5px 10px;border:0;border-radius:8px;background:#f5e4e9;cursor:pointer}
-#checkout{max-width:500px;margin:35px auto;padding:25px 18px;text-align:center;background:#fff0f3;border-radius:20px}
-#checkout h2{margin-bottom:15px}
-#checkout input,#checkout textarea,#checkout select{display:block;width:100%;padding:13px;margin:12px 0;border:1px solid #efd5de;border-radius:10px;background:white;font-family:inherit}
-#checkout button:disabled{opacity:.6;cursor:not-allowed}
-.note{font-size:11px;color:#967b84;margin-top:15px;line-height:1.6}
-#orderMessage{font-size:14px;font-weight:600}
-footer{text-align:center;padding:35px 15px;background:#f9e9ee;color:#916a78;font-size:12px;line-height:2}
-footer strong{font-family:'Playfair Display',serif;font-size:23px}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:'DM Sans',sans-serif;
+background:#fffaf8;
+color:#49383e;
+}
+
+header{
+text-align:center;
+padding:25px 12px;
+background:#fcecf0;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:35px;
+color:#a65772;
+letter-spacing:3px;
+}
+
+.tagline{
+font-size:10px;
+letter-spacing:3px;
+margin-top:7px;
+color:#99717e;
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:22px;
+padding:17px 8px;
+background:white;
+position:sticky;
+top:0;
+z-index:5;
+}
+
+nav a{
+color:#805968;
+text-decoration:none;
+font-size:13px;
+}
+
+.hero{
+text-align:center;
+padding:75px 18px;
+background:linear-gradient(135deg,#f8dfe7,#fff1e9);
+}
+
+.hero small{
+color:#a66b7d;
+letter-spacing:3px;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:43px;
+color:#98556d;
+margin:18px 0;
+}
+
+.hero p{
+font-size:14px;
+color:#806d73;
+margin-bottom:25px;
+}
+
+.btn{
+display:inline-block;
+padding:13px 27px;
+border-radius:30px;
+background:#ae657e;
+color:white;
+border:0;
+cursor:pointer;
+font-size:13px;
+}
+
+.section-title{
+text-align:center;
+padding:45px 10px 20px;
+}
+
+.section-title h2,
+#cart h2{
+font-family:'Playfair Display',serif;
+color:#a65d75;
+}
+
+.section-title h2{
+font-size:30px;
+}
+
+.section-title p{
+font-size:12px;
+color:#9a8188;
+margin-top:8px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:15px;
+padding:15px;
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:9px;
+border-radius:17px;
+box-shadow:0 5px 20px #c99aa51c;
+min-width:0;
+}
+
+.gallery{
+display:flex;
+overflow-x:auto;
+scrollbar-width:none;
+border-radius:12px;
+}
+
+.gallery::-webkit-scrollbar{
+display:none;
+}
+
+.gallery img{
+width:100%;
+height:220px;
+flex:0 0 100%;
+object-fit:cover;
+border-radius:12px;
+}
+
+.card h3{
+font-family:'Playfair Display',serif;
+color:#92536a;
+font-size:17px;
+margin:12px 4px 5px;
+}
+
+.price{
+margin:5px;
+font-weight:700;
+color:#9e5c73;
+}
+
+.old-price{
+color:#a99ba0;
+text-decoration:line-through;
+font-size:12px;
+margin-left:5px;
+font-weight:400;
+}
+
+.description{
+font-size:12px;
+color:#8c777f;
+margin:7px 5px;
+line-height:1.5;
+}
+
+.card button{
+width:100%;
+margin-top:9px;
+padding:11px;
+border:0;
+border-radius:25px;
+background:#f5e4e9;
+color:#96566d;
+cursor:pointer;
+}
+
+#productMessage{
+text-align:center;
+padding:20px;
+color:#967b84;
+font-size:13px;
+}
+
+#cart{
+text-align:center;
+padding:35px 15px;
+background:#fff0f3;
+margin-top:35px;
+}
+
+#cart h2{
+margin-bottom:15px;
+}
+
+.cart-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px;
+max-width:450px;
+margin:12px auto;
+padding:12px;
+background:white;
+border-radius:10px;
+font-size:13px;
+}
+
+.cart-row button{
+padding:5px 10px;
+border:0;
+border-radius:8px;
+background:#f5e4e9;
+cursor:pointer;
+}
+
+#total{
+margin:15px;
+}
+
+footer{
+text-align:center;
+padding:35px 15px;
+background:#f9e9ee;
+color:#916a78;
+font-size:12px;
+line-height:2;
+}
+
+footer strong{
+font-family:'Playfair Display',serif;
+font-size:23px;
+}
+
 @media(min-width:650px){
-.products{grid-template-columns:repeat(4,1fr)}
-.hero h1{font-size:55px}
+.products{
+grid-template-columns:repeat(4,1fr);
+}
+
+.hero h1{
+font-size:55px;
+}
 }
 </style>
 </head>
@@ -66,7 +269,6 @@ footer strong{font-family:'Playfair Display',serif;font-size:23px}
 <a href="#home">Home</a>
 <a href="#collection">Collection</a>
 <a href="#cart">Cart</a>
-<a href="#checkout">Order</a>
 </nav>
 
 <section class="hero" id="home">
@@ -77,38 +279,30 @@ footer strong{font-family:'Playfair Display',serif;font-size:23px}
 </section>
 
 <section id="collection">
+
 <div class="section-title">
 <h2>Our Pretty Collection</h2>
 <p>Handpicked styles just for you ✨</p>
 </div>
-<div id="productMessage">Loading pretty products... ♡</div>
+
+<div id="productMessage">
+Loading pretty products... ♡
+</div>
+
 <div class="products" id="products"></div>
+
 </section>
 
 <section id="cart">
+
 <h2>Your Shopping Bag ♡</h2>
-<div id="cartItems">Your cart is empty.</div>
+
+<div id="cartItems">
+Your cart is empty.
+</div>
+
 <h3 id="total">Total: ₹0</h3>
-</section>
 
-<section id="checkout">
-<h2>Place Your Order ♡</h2>
-
-<form id="orderForm">
-<input type="text" id="customerName" placeholder="Your Full Name" maxlength="100" required>
-<input type="tel" id="phone" placeholder="10 Digit Mobile Number" pattern="[6-9][0-9]{9}" maxlength="10" inputmode="numeric" required>
-<textarea id="address" placeholder="Full Delivery Address (House, Village, PIN Code)" rows="4" maxlength="1000" required></textarea>
-
-<select id="payment" required>
-<option value="">Choose Payment Method</option>
-<option value="Cash on Delivery">Cash on Delivery</option>
-</select>
-
-<button class="btn" type="submit" id="orderBtn">Place Order ♡</button>
-</form>
-
-<p id="orderMessage" class="note"></p>
-<p class="note">Your order details will be submitted to our order database.</p>
 </section>
 
 <footer>
@@ -122,11 +316,11 @@ footer strong{font-family:'Playfair Display',serif;font-size:23px}
 
 // SUPABASE CONNECTION
 
-const SUPABASE_URL = "https://dbbvlhzjxrubbxkrwkqe.supabase.co";
+const SUPABASE_URL =
+"https://dbbvlhzjxrubbxkrwkqe.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
-
-// SHOPPING CART
+const SUPABASE_KEY =
+"sb_publishable_KpVdLbilszJmNCzT69GlYg_Ed8ffEkv";
 
 let cart = [];
 let productsData = [];
@@ -135,14 +329,23 @@ let productsData = [];
 
 async function loadProducts(){
 
-const container = document.getElementById("products");
-const message = document.getElementById("productMessage");
+const container =
+document.getElementById("products");
+
+const message =
+document.getElementById("productMessage");
+
+message.textContent =
+"Loading pretty products... ♡";
+
+container.replaceChildren();
 
 try{
 
 const response = await fetch(
-SUPABASE_URL + "/rest/v1/products?select=id,name,price,original_price,image1,image2,image3,description&order=created_at.desc",
+SUPABASE_URL + "/rest/v1/products?select=*&order=created_at.desc",
 {
+method:"GET",
 headers:{
 "apikey":SUPABASE_KEY,
 "Authorization":"Bearer "+SUPABASE_KEY
@@ -150,41 +353,73 @@ headers:{
 }
 );
 
-if(!response.ok) throw new Error(await response.text());
+if(!response.ok){
+
+const errorText = await response.text();
+
+throw new Error(
+"Supabase error "+response.status+": "+errorText
+);
+
+}
 
 productsData = await response.json();
-container.replaceChildren();
+
+if(!Array.isArray(productsData)){
+throw new Error("Invalid product data received.");
+}
 
 if(productsData.length===0){
-message.textContent="No products available right now. ♡";
+
+message.textContent =
+"No products available right now. ♡";
+
 return;
+
 }
 
 message.textContent="";
 
 productsData.forEach(product=>{
 
-const card=document.createElement("div");
+const card = document.createElement("div");
 card.className="card";
 
-const gallery=document.createElement("div");
+const gallery = document.createElement("div");
 gallery.className="gallery";
 
-const images=[product.image1,product.image2,product.image3]
-.filter(url=>url && url.trim()!=="");
+const imageFields=[
+product.image1,
+product.image2,
+product.image3
+];
+
+const images=imageFields.filter(
+url=>typeof url==="string" && url.trim()!==""
+);
 
 if(images.length===0){
+
 const fallback=document.createElement("p");
+
 fallback.textContent="Image coming soon ♡";
+
 gallery.appendChild(fallback);
+
 }else{
 
-images.forEach((url,index)=>{
+images.forEach(url=>{
 
 const img=document.createElement("img");
+
 img.src=url;
-img.alt=product.name+" photo "+(index+1);
+img.alt=product.name || "JAN FINDS Product";
 img.loading="lazy";
+
+img.onerror=()=>{
+img.alt="Image unavailable";
+};
+
 gallery.appendChild(img);
 
 });
@@ -192,45 +427,55 @@ gallery.appendChild(img);
 }
 
 const title=document.createElement("h3");
-title.textContent=product.name;
+
+title.textContent=product.name || "Pretty Fashion Item";
 
 const price=document.createElement("p");
+
 price.className="price";
 price.textContent="₹"+product.price;
 
 if(product.original_price){
-const oldPrice=document.createElement("span");
-oldPrice.className="old-price";
-oldPrice.textContent="₹"+product.original_price;
-price.appendChild(oldPrice);
+
+const old=document.createElement("span");
+
+old.className="old-price";
+old.textContent="₹"+product.original_price;
+
+price.appendChild(old);
+
 }
 
 const description=document.createElement("p");
+
 description.className="description";
-description.textContent=product.description||"";
+description.textContent=product.description || "";
 
 const button=document.createElement("button");
+
 button.textContent="Add to Cart ♡";
-button.addEventListener("click",()=>addCart(product));
 
-card.append(gallery);
+button.addEventListener("click",()=>{
+addCart(product);
+});
 
-if(images.length>1){
-const note=document.createElement("p");
-note.className="swipe-note";
-note.textContent="Swipe to see more photos →";
-card.appendChild(note);
-}
+card.append(
+gallery,
+title,
+price,
+description,
+button
+);
 
-card.append(title,price,description,button);
 container.appendChild(card);
 
 });
 
 }catch(error){
 
-console.error("Product loading error:",error);
-message.textContent="Products could not be loaded. Please check Supabase settings.";
+console.error("JAN FINDS ERROR:",error);
+
+message.textContent=error.message;
 
 }
 
@@ -240,17 +485,25 @@ message.textContent="Products could not be loaded. Please check Supabase setting
 
 function addCart(product){
 
-const existing=cart.find(item=>item.id===product.id);
+const existing=cart.find(
+item=>item.id===product.id
+);
 
 if(existing){
+
 existing.quantity++;
+
 }else{
+
 cart.push({
+
 id:product.id,
 name:product.name,
 price:Number(product.price),
 quantity:1
+
 });
+
 }
 
 updateCart();
@@ -261,128 +514,85 @@ updateCart();
 
 function updateCart(){
 
-const cartItems=document.getElementById("cartItems");
-cartItems.replaceChildren();
+const container=
+document.getElementById("cartItems");
+
+container.replaceChildren();
 
 if(cart.length===0){
-cartItems.textContent="Your cart is empty.";
+
+container.textContent="Your cart is empty.";
+
 }
 
-cart.forEach((item,index)=>{
+cart.forEach(item=>{
 
 const row=document.createElement("div");
+
 row.className="cart-row";
 
 const name=document.createElement("span");
-name.textContent=item.name+" × "+item.quantity;
+
+name.textContent=
+item.name+" × "+item.quantity;
 
 const price=document.createElement("span");
-price.textContent="₹"+(item.price*item.quantity);
 
-const remove=document.createElement("button");
-remove.textContent="−";
+price.textContent=
+"₹"+(item.price*item.quantity);
 
-remove.onclick=()=>{
+const minus=document.createElement("button");
+
+minus.textContent="−";
+
+minus.onclick=()=>{
+
 item.quantity--;
-if(item.quantity<=0) cart.splice(index,1);
-updateCart();
-};
 
-const add=document.createElement("button");
-add.textContent="+";
-add.onclick=()=>{
-item.quantity++;
-updateCart();
-};
+if(item.quantity<=0){
 
-row.append(name,price,remove,add);
-cartItems.appendChild(row);
-
-});
-
-const total=cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
-
-document.getElementById("total").textContent="Total: ₹"+total;
-
-}
-
-// PLACE ORDER
-
-document.getElementById("orderForm")
-.addEventListener("submit",async function(event){
-
-event.preventDefault();
-
-const message=document.getElementById("orderMessage");
-const button=document.getElementById("orderBtn");
-
-if(cart.length===0){
-message.textContent="Please add a product to your cart first.";
-return;
-}
-
-const name=document.getElementById("customerName").value.trim();
-const phone=document.getElementById("phone").value.trim();
-const address=document.getElementById("address").value.trim();
-
-if(!/^[6-9][0-9]{9}$/.test(phone)){
-message.textContent="Please enter a valid 10 digit Indian mobile number.";
-return;
-}
-
-const total=cart.reduce((sum,item)=>sum+item.price*item.quantity,0);
-
-const order={
-customer_name:name,
-phone:phone,
-address:address,
-product_name:cart.map(item=>item.name).join(", "),
-quantity:cart.reduce((sum,item)=>sum+item.quantity,0),
-selling_price:total,
-order_status:"New"
-};
-
-button.disabled=true;
-button.textContent="Please wait...";
-message.textContent="";
-
-try{
-
-const response=await fetch(
-SUPABASE_URL+"/rest/v1/orders",
-{
-method:"POST",
-headers:{
-"apikey":SUPABASE_KEY,
-"Authorization":"Bearer "+SUPABASE_KEY,
-"Content-Type":"application/json",
-"Prefer":"return=minimal"
-},
-body:JSON.stringify(order)
-}
+cart=cart.filter(
+p=>p.id!==item.id
 );
 
-if(!response.ok) throw new Error(await response.text());
-
-message.textContent="♡ Your order has been placed successfully! Thank you for shopping with JAN FINDS.";
-
-document.getElementById("orderForm").reset();
-cart=[];
-updateCart();
-
-}catch(error){
-
-console.error("Order error:",error);
-message.textContent="Sorry! Order could not be placed. Please try again.";
-
-}finally{
-
-button.disabled=false;
-button.textContent="Place Order ♡";
-
 }
 
+updateCart();
+
+};
+
+const plus=document.createElement("button");
+
+plus.textContent="+";
+
+plus.onclick=()=>{
+
+item.quantity++;
+
+updateCart();
+
+};
+
+row.append(
+name,
+price,
+minus,
+plus
+);
+
+container.appendChild(row);
+
 });
+
+const total=cart.reduce(
+(sum,item)=>sum+item.price*item.quantity,
+0
+);
+
+document.getElementById("total").textContent=
+"Total: ₹"+total;
+
+}
 
 // START WEBSITE
 
